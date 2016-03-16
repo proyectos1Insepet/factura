@@ -1,0 +1,9 @@
+Placa
+Kilometraje
+Cédula jurídica
+Alt 0162 simbolo de moneda
+Volumen en litros
+Modos de pago configurables en monitor
+Impresora por isla
+Número de campos modificables
+

@@ -33,7 +33,8 @@ Sistemas Insepet LTDA
         <p><input name="ciudad" type="text" placeholder="Ciudad"/></p>
         <p><input name="nit" type="text" placeholder="Nit"/></p>
         <p><input name="tel" type="text"  placeholder="Teléfono"/></p>
-        <p><input name="moneda" type="text"  placeholder="Simbolo de moneda"/></p>
+        <p><input name="moneda" type="text"  placeholder="Símbolo de moneda"/></p>
+        <p><input name="volumen" type="text"  placeholder="Símbolo de volumen"/></p>
         <input input type="submit" name="enviar" value="Ingresar"  id="button-blue"  />        
       </div>
     </form>

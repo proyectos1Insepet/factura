@@ -30,13 +30,26 @@ Sistemas Insepet LTDA
 <div id="resultados">
    
 <?php
-$serverName = "192.168.110.42"; //serverName\instanceName
+$serverName = "192.168.110.120"; //serverName\instanceName
 $tabl = 'venta';
 $params = array();
 $options = array("Scrollable" => SQLSRV_CURSOR_CLIENT_BUFFERED);
 $pstock="EXEC SP_COLUMNS $tabl";
 $connectionInfo = array( "Database"=>"EstacionNSX", "UID"=>"sa", "PWD"=>"6319O#17B75B21");
 $conn = sqlsrv_connect( $serverName, $connectionInfo);
+
+?>
+    <?php
+$servidor = "localhost";
+    $username = "root";
+    $password = "12345";
+    $dbname = "factura";
+    $connect = new mysqli($servidor, $username, $password, $dbname);
+    $consulta = "SELECT moneda, volumen FROM datos";
+    $result = $connect->query($consulta);
+    $row2 = $result->fetch_assoc();
+        //echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";        
+    $connect->close();
 
 ?>
     
@@ -100,8 +113,8 @@ if (!$query2) {
             echo "<td background-color:#F5D0A9;>".'<a href="index.php?num_venta='.$i.'">'.$i.'</a>'."</td> ";
             echo "<td background-color:#F5D0A9;>".$posicion." </td>";
             echo "<td background-color:#F5D0A9;>".$manguera." </td>";
-            echo "<td background-color:#F5D0A9;>".$cantidad2." G"."</td>";
-            echo "<td background-color:#F5D0A9;>"."$ ".$valor2." </td>";
+            echo "<td background-color:#F5D0A9;>".$cantidad2." ".$row2["volumen"]."</td>";
+            echo "<td background-color:#F5D0A9;>"." ".$row2["moneda"].$valor2." </td>";
             echo "<td background-color:#F5D0A9;>".$producto." </td>";            
     echo "</tr>";        
             }else {echo '<br>Sin Resultados.';}                                

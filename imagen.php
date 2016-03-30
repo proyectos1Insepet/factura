@@ -68,8 +68,8 @@ if( $conn === false ) {
     $nit = filter_input(INPUT_POST, 'nit'); /*isset($_POST['dir'])? $_POST['dir'] : NULL;*/
     $tel = filter_input(INPUT_POST, 'tel');/*isset($_POST['tel'])? $_POST['tel'] : NULL;*/
     $moneda = filter_input(INPUT_POST, 'moneda');/*isset($_POST['tel'])? $_POST['tel'] : NULL;*/
-    
-    $sql = "INSERT INTO datos (empresa, dir, ciudad, nit,tel,moneda) VALUES ('$empresa','$dir','$ciudad','$nit','$tel','$moneda')";
+    $volumen =filter_input(INPUT_POST, 'volumen');
+    $sql = "INSERT INTO datos (empresa, dir, ciudad, nit,tel,moneda,volumen) VALUES ('$empresa','$dir','$ciudad','$nit','$tel','$moneda','$volumen')";
     
     if ($conn->query($sql) === TRUE) {
     echo "Encabezado de factura insertado correctamente";

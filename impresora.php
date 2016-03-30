@@ -1,6 +1,6 @@
 <?php
 
-if(($handle = @fopen("COM7", "w")) === FALSE){
+if(($handle = @fopen("COM6", "w")) === FALSE){
         die('No se puedo Imprimir, Verifique su conexion con el Terminal');
     }
     
@@ -87,5 +87,5 @@ fwrite($handle,"Resolucion de facturacion 123-456");
 
 
 fclose($handle); // cierra el fichero PRN
-$salida = shell_exec('lpr COM7'); //lpr->puerto impresora, imprimir archivo PRN
+$salida = shell_exec('lpr COM6'); //lpr->puerto impresora, imprimir archivo PRN
 ?>

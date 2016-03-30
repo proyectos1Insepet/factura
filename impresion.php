@@ -29,7 +29,7 @@ Sistemas Insepet LTDA
          <p>
 <?php
 
-$serverName = "192.168.110.42"; //serverName\instanceName
+$serverName = "192.168.110.120"; //serverName\instanceName
 $tabl = 'venta';
 $params = array();
 $options = array("Scrollable" => SQLSRV_CURSOR_CLIENT_BUFFERED);
@@ -41,7 +41,7 @@ $username = "root";
 $password = "12345";
 $dbname = "factura";
 $connect = new mysqli($servidor, $username, $password, $dbname);
-$consulta = "SELECT  moneda FROM datos";
+$consulta = "SELECT  moneda, volumen FROM datos";
 $result = $connect->query($consulta);
 $row1 = $result->fetch_assoc();
 $connect->close();
@@ -75,7 +75,8 @@ if( $conn === false ) {
                 if( $conn === false ) {
                     die( print_r( '<br>Error2 Fetch: ' .sqlsrv_errors(), true));
                 }
-            $simbolo = $row1["moneda"];    
+            $simbolo = $row1["moneda"]; 
+            $volumen = $row1["volumen"];
             $fecha = sqlsrv_get_field( $query, 0); 
             $producto = sqlsrv_get_field( $query, 3); 
             $cantidad = sqlsrv_get_field( $query, 4);
@@ -93,7 +94,7 @@ if( $conn === false ) {
             echo "Teléfono : " . "$tel" . "<br>";
             echo "Producto : ". "$producto"."<br>";
             echo "PPU : "."$simbolo"." "."$precio2"."<br>";
-            echo "Valor tanqueado : ". "$cantidad"." G"."<br>";
+            echo "Valor tanqueado : ". "$cantidad"." ".$row1["volumen"]."<br>";
             echo "Importe : "."$simbolo"." "."$valor2"."<br>";
             
 } else{

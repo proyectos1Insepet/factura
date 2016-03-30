@@ -44,10 +44,12 @@ Sistemas Insepet LTDA
           <option>Dato 1 </option>
           <option>Dato 2</option>      
          </select>      
+      <input name="campo2" type="text"  placeholder="Digite el primer dato"  /></p>
       <p>Dato según usuario: <select name="campo2">
           <option>Dato 3 </option>
           <option>Dato 4</option>
          </select>
+          <input name="campo2" type="text" placeholder="Digite segundo dato"  /></p>
       <input class="centro" type="image" name="enviar"  src="printer_64.png" alt="impresion" width="60px" height="60px"  onclick ="this.form.action = 'impresion.php';this.form.target = '_blank';"/>
       <input class="centro" type="image" name="enviar"  src="pdf.png" alt="impresion" width="60px" height="60px"  onclick ="this.form.action = 'pdf.php';this.form.target = '_blank';"/>
      

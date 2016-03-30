@@ -11,7 +11,8 @@ Sistemas Insepet LTDA
   <link rel="icon" href="favicon.ico">
   <link rel="shortcut icon" href="favicon.ico">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <script language="JavaScript" type="text/javascript" src="js/jQuery.js"></script>
+  <script language="JavaScript" type="text/javascript" src="js/form.js"></script>
   <title>Formulario de facturación</title>
  </head>
  <body>
@@ -25,9 +26,16 @@ Sistemas Insepet LTDA
   </ul>
 </nav>
        
+     
+     
+     <fieldset id="buildyourform">
+     <legend>Build your own form!</legend>
+     </fieldset>
+     <input type="button" value="Preview form" class="add" id="preview" />
+     <input type="button" value="Add a field" class="add" id="add" />   
 
     <form  id="formulario"  method="post">
-        <p><input name="num_venta" type="text"  placeholder="Número de venta" value="<?php echo filter_input(INPUT_GET, 'num_venta'); ?>" /></p>
+      <p><input name="num_venta" type="text"  placeholder="Número de venta" value="<?php echo filter_input(INPUT_GET, 'num_venta'); ?>" /></p>
       <p><input name="nombre" type="text"  placeholder="Nombre"  /></p>
       <p><input name="nit" type="text" placeholder="Nit"  /></p>
       <p><input name="dir" type="text" placeholder="Dirección"  /></p>
@@ -37,17 +45,6 @@ Sistemas Insepet LTDA
      
       </form>
   
-    
-    
-        
-
-<div id="impresion">
-   
-
-    
-    
-    
-
-        
+          
     </body>
 </html>

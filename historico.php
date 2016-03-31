@@ -28,6 +28,7 @@ Sistemas Insepet LTDA
         
 
 <div id="resultados">
+    <h1>Histórico de ventas</h1>
    
 <?php
 $serverName = "192.168.110.120"; //serverName\instanceName

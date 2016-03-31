@@ -116,17 +116,16 @@ class imgUpldr {
 			break; 
 		}
 		// Asignamos el nombre a la imagen según la fecha en formato aaaammddhhiiss y la extensión
-		$this->_name = date("Ymdh").".".$this->_ext;
-                $nombre = date("Ymdh");
+		$this->_name = date("Ymdh").".".$this->_ext;                
                 $servername = "localhost";
                 $username = "root";
                 $password = "12345";
-                $dbname = "factura";
+                $dbname = "monitor";
                 $conn = new mysqli($servername, $username, $password, $dbname);
                 if ($conn->connect_error) {
                     die("Connection failed: " . $conn->connect_error);
                 }
-                $sql = "UPDATE datos SET logo= '$this->_name'";
+                $sql = "UPDATE configuracion SET logo= '$this->_name'";
                  if ($conn->query($sql) === TRUE) {
                  echo "Logo de factura subido correctamente";
                  } else {

@@ -35,6 +35,19 @@ Sistemas Insepet LTDA
         <p><input name="tel" type="text"  placeholder="Teléfono"/></p>
         <p><input name="moneda" type="text"  placeholder="Símbolo de moneda"/></p>
         <p><input name="volumen" type="text"  placeholder="Símbolo de volumen"/></p>
+        <p>Puerto de impresora <br>
+            <select name="puerto">
+                <option>COM1</option>
+                <option>COM2</option>
+                <option>COM3</option>
+                <option>COM4</option>
+                <option>COM5</option>
+                <option>COM6</option>
+                <option>COM7</option>
+                <option>COM8</option>
+                <option>COM9</option>
+            </select>
+        </p>
         <input input type="submit" name="enviar" value="Ingresar"  id="button-blue"  />        
       </div>
     </form>

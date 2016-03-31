@@ -51,7 +51,7 @@ if (filter_input(INPUT_POST,'subirBtn')) {
 $servername = "localhost";
 $username = "root";
 $password = "12345";
-$dbname = "factura";
+$dbname = "monitor";
 $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
@@ -69,7 +69,8 @@ if( $conn === false ) {
     $tel = filter_input(INPUT_POST, 'tel');/*isset($_POST['tel'])? $_POST['tel'] : NULL;*/
     $moneda = filter_input(INPUT_POST, 'moneda');/*isset($_POST['tel'])? $_POST['tel'] : NULL;*/
     $volumen =filter_input(INPUT_POST, 'volumen');
-    $sql = "INSERT INTO datos (empresa, dir, ciudad, nit,tel,moneda,volumen) VALUES ('$empresa','$dir','$ciudad','$nit','$tel','$moneda','$volumen')";
+    $puerto = filter_input(INPUT_POST, 'puerto');
+    $sql = "UPDATE configuracion SET empresa='$empresa', dir='$dir', ciudad='$ciudad', nit='$nit',tel='$tel',moneda='$moneda',volumen='$volumen',puerto='$puerto'";
     
     if ($conn->query($sql) === TRUE) {
     echo "Encabezado de factura insertado correctamente";

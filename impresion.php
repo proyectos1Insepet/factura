@@ -24,9 +24,11 @@ Sistemas Insepet LTDA
     <li><a href="configuracion.php">Configuracion</a></li>
   </ul>
 </nav>
-
+     <div id="resultados">
      <h1>Verifique los datos antes de imprimir</h1>
-         <p>
+     </div>
+     <p>
+     <div class="justificado">
 <?php
 
 $serverName = "192.168.110.120"; //serverName\instanceName
@@ -39,9 +41,9 @@ $conn = sqlsrv_connect( $serverName, $connectionInfo);
 $servidor = "localhost";
 $username = "root";
 $password = "12345";
-$dbname = "factura";
+$dbname = "monitor";
 $connect = new mysqli($servidor, $username, $password, $dbname);
-$consulta = "SELECT  moneda, volumen FROM datos";
+$consulta = "SELECT  moneda, volumen FROM configuracion";
 $result = $connect->query($consulta);
 $row1 = $result->fetch_assoc();
 $connect->close();
@@ -55,7 +57,12 @@ if( $conn === false ) {
     $nit = filter_input(INPUT_POST, 'nit');/*isset($_POST['nit'])? $_POST['nit'] : NULL;*/
     $dir = filter_input(INPUT_POST, 'dir'); /*isset($_POST['dir'])? $_POST['dir'] : NULL;*/
     $tel = filter_input(INPUT_POST, 'tel');/*isset($_POST['tel'])? $_POST['tel'] : NULL;*/
+    $label1 = filter_input(INPUT_POST, 'select1');
+    $contenido1 = filter_input(INPUT_POST, 'campo1');
+    $label2 = filter_input(INPUT_POST, 'select2');
+    $contenido2 = filter_input(INPUT_POST, 'campo2');
     
+        
 
     $sql = "select  FechaFinal, dvc.Fk_IdPosicion, pg.NumeroManguera, 
                         p.Nombre,v.CantidadTotal, v.valortotal, pp.Precio from venta v
@@ -84,7 +91,7 @@ if( $conn === false ) {
             $precio   = sqlsrv_get_field( $query, 6);
             $precio2  = $precio/1;
             $valor2 = $cantidad*$precio2;
-            $fecha2 = date_format($fecha, 'Y-m-d');
+            $fecha2 = date_format($fecha, 'Y-m-d');            
      
             echo "Fecha : ".$fecha2."<br> ";
             echo "Número de transacción : "."$num_venta"."<br>";
@@ -92,6 +99,12 @@ if( $conn === false ) {
             echo "Nit : "."$nit"."<br>" ;
             echo "Dirección : " . "$dir" . "<br>";
             echo "Teléfono : " . "$tel" . "<br>";
+            if($contenido1 !=""){
+                echo $label1.": ".$contenido1."<br>" ;
+            }
+            if($contenido2 !=""){
+                echo $label2.": ".$contenido2."<br>" ;
+            }
             echo "Producto : ". "$producto"."<br>";
             echo "PPU : "."$simbolo"." "."$precio2"."<br>";
             echo "Valor tanqueado : ". "$cantidad"." ".$row1["volumen"]."<br>";
@@ -106,12 +119,13 @@ if( $conn === false ) {
 sqlsrv_close($conn);
 
 ?>
-</p>
+
 
 <?php
-echo '<a href="impresora.php?fecha='.$fecha2.'&n_venta='.$num_venta.'&nombre='.$nombre.'&nit='.$nit.'&dir='.$dir.'&tel='.$tel.'&producto='.$producto.'&ppu='.$precio2.'&cantidad='.$cantidad.'&valor='.$valor2.'">'.'Impresión</a>'."</td> ";
+echo '<a  target =_self href="impresora.php?fecha='.$fecha2.'&n_venta='.$num_venta.'&nombre='.$nombre.'&nit='.$nit.'&dir='.$dir.'&tel='.$tel.'&select1='.$label1.'&campo1='.$contenido1.'&producto='.$producto.'&ppu='.$precio2.'&cantidad='.$cantidad.'&valor='.$valor2.'">'.'Impresión</a>'."</td> ";
 ?>
-     
+         </div>
+</p>     
      </body>
 </html>
 

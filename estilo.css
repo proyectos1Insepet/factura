@@ -10,8 +10,22 @@ and open the template in the editor.
     Created on : 24-feb-2016, 13:46:25
     Author     : Recepcion
 */
-@media screen and (min-width: 480px) {
-    
+@media screen and (max-width: 480px) {
+    .justificado{
+        width: 73%;
+        text-align: justify;
+        float: right;
+        color: cornflowerblue;   
+        
+    }
+}
+@media screen and (min-width: 480px){
+    .justificado{    
+        width: 60%;
+        text-align: justify;
+        float: right;
+        color: cornflowerblue;
+    }
 }
 input[type=submit] {
   border: 1px dotted #999;
@@ -56,9 +70,10 @@ form {
 .centro{
     text-align: center;
 }
+
 #formulario {
   position: relative;
-  margin : 30px auto;
+  margin : 20px auto;
   background: #f2f2f2;
   font-family: 'Lato', sans-serif;
 }
@@ -83,9 +98,7 @@ form {
 }
 p{
     color: cornflowerblue;
-    text-align: center;
-
-    
+    text-align: center;    
     font-family: 'Lato', sans-serif;
 }
 #resultados #tabla{

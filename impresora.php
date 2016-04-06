@@ -27,6 +27,7 @@ Sistemas Insepet LTDA
 
 
 <?php
+require('/fpdf/fpdf.php');
 $servidor = "localhost";
 $username = "root";
 $password = "12345";
@@ -51,6 +52,8 @@ $cantidad = filter_input(INPUT_GET, 'cantidad');
 $valor    = filter_input(INPUT_GET, 'valor');
 $label1 = filter_input(INPUT_GET, 'select1');
 $contenido1 = filter_input(INPUT_GET, 'campo1');
+$label2 = filter_input(INPUT_GET, 'select2');
+$contenido2 = filter_input(INPUT_GET, 'campo2');
 /*$dato = $_POST['datos'];  */
 
 fwrite($handle,chr(27). chr(64));//reinicio
@@ -93,10 +96,14 @@ fwrite($handle,"Nit:              ".$nit);
 fwrite($handle, chr(27). chr(100). chr(1));//salto de linea
 fwrite($handle,"Dirección: ".$dir);
 fwrite($handle, chr(27). chr(100). chr(1));//salto de linea
-fwrite($handle,"Telefono:               ".$tel);
+fwrite($handle,"Telefono:          ".$tel);
 if ($contenido1!=""){
     fwrite($handle, chr(27). chr(100). chr(1));//salto de linea
-    fwrite($handle,$label1." :        ".$contenido1);    
+    fwrite($handle,$label1." :          ".$contenido1);    
+}
+if ($contenido2!=""){
+    fwrite($handle, chr(27). chr(100). chr(1));//salto de linea
+    fwrite($handle,$label2." :        ".$contenido2);    
 }
 fwrite($handle, chr(27). chr(100). chr(1));//salto de linea
 fwrite($handle,"Producto:             ".$producto);

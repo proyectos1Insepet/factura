@@ -10,7 +10,22 @@ Sistemas Insepet LTDA
   <link rel="icon" href="../favicon.ico">
   <link rel="shortcut icon" href="../favicon.ico">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script language="JavaScript" type="text/javascript" src="../js/jQuery.js"></script>
+  <script language="JavaScript" type="text/javascript" src="../js/form.js"></script>
+   <script type="text/javascript">
 
+        function mostrarReferencia(){
+        //Si la opcion con id Conocido_1 (dentro del documento > formulario con name fcontacto >     y a la vez dentro del array de Conocido) esta activada
+        if (document.fcontacto.Conocido[1].checked === true) {
+        //muestra (cambiando la propiedad display del estilo) el div con id 'desdeotro'
+        document.getElementById('desdeotro').style.display='block';
+        //por el contrario, si no esta seleccionada
+        } else {
+        //oculta el div con id 'desdeotro'
+        document.getElementById('desdeotro').style.display='none';
+        }
+        }
+    </script>
   <title>Billing Form</title>
  </head>
  <body>
@@ -24,16 +39,32 @@ Sistemas Insepet LTDA
     <li><a href="configuracion.php">Configuration</a></li>
   </ul>
 </nav>
-       
+     <div id="resultados">
+        <h1>Sales Print</h1>
+     </div>
 <div>
-    <form  id="formulario"  method="post">
+    <form name="fcontacto"  id="formulario"  method="post">
         <p><input name="num_venta" type="text"  placeholder="Número de venta" value="<?php echo filter_input(INPUT_GET, 'num_venta'); ?>" /></p>
       <p><input name="nombre" type="text"  placeholder="Name"  /></p>
       <p><input name="nit" type="text" placeholder="VAT"  /></p>
       <p><input name="dir" type="text" placeholder="Address"  /></p>
       <p><input name="tel" type="text"  placeholder="Phone"  /></p>    
-      <input type="image" name="enviar"  src="../printer_64.png" alt="impresion" width="60px" height="60px"  onclick ="this.form.action = 'impresion.php';this.form.target = '_blank';"/>
-      <input type="image" name="enviar"  src="../pdf.png" alt="impresion" width="60px" height="60px"  onclick ="this.form.action = 'pdf.php';this.form.target = '_blank';"/>
+      <p><input type="radio" name="Conocido" value="Google" id="Conocido_0" onclick="mostrarReferencia();" />Fields Complete
+      <input type="radio" name="Conocido" value="Otros" id="Conocido_1" onclick="mostrarReferencia();" /> Add fields</p>
+      <div id="desdeotro" style="display:none;">
+          <p>Data accord user:<br><select name="select1">
+              <option>Plate </option>
+              <option>Data 2</option>      
+         </select>      
+      <input name="campo1" type="text"  placeholder="Type first data"  /></p>
+          <p>Data accord user: <br><select name="select2">
+          <option>Data 3</option>
+          <option>Data 4</option>
+         </select>
+          <input name="campo2" type="text" placeholder="Type second data"  /></p>
+      </div>
+      <input type="image" name="enviar"  src="../printer_64.png" alt="impresion" width="60px" height="60px"  onclick ="this.form.action = 'impresion.php';this.form.target = '_self';"/>
+      <input type="image" name="enviar"  src="../pdf.png" alt="impresion" width="60px" height="60px"  onclick ="this.form.action = 'pdf.php';this.form.target = '_self';"/>
      
       </form>
   </div>

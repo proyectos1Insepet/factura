@@ -41,18 +41,18 @@ $conn = sqlsrv_connect( $serverName, $connectionInfo);
 
 ?>
     <?php
-$servidor = "localhost";
+    $servidor = "localhost";
     $username = "root";
     $password = "12345";
-    $dbname = "factura";
+    $dbname = "monitor";
     $connect = new mysqli($servidor, $username, $password, $dbname);
-    $consulta = "SELECT moneda, volumen FROM datos";
+    $consulta = "SELECT moneda, volumen FROM configuracion";
     $result = $connect->query($consulta);
     $row2 = $result->fetch_assoc();
         //echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";        
     $connect->close();
 
-?>
+  ?>
     
 <?php
 $sql2 = "SELECT MAX(Pk_IdVenta) FROM $tabl";
@@ -115,7 +115,7 @@ if (!$query2) {
             echo "<td background-color:#F5D0A9;>".$posicion." </td>";
             echo "<td background-color:#F5D0A9;>".$manguera." </td>";
             echo "<td background-color:#F5D0A9;>".$cantidad2." ".$row2["volumen"]."</td>";
-            echo "<td background-color:#F5D0A9;>"." ".$row2["moneda"].$valor2." </td>";
+            echo "<td background-color:#F5D0A9;>"." ".$row2["moneda"]." ".$valor2." </td>";
             echo "<td background-color:#F5D0A9;>".$producto." </td>";            
     echo "</tr>";        
             }else {echo '<br>Sin Resultados.';}                                

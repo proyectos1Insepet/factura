@@ -1,18 +1,47 @@
-<?php
+<!DOCTYPE html>
+<!--
+Monitor de facturación
+Sistemas Insepet LTDA
+-->
+<html>
+ <head>  
+  <meta charset="UTF-8">
+  <link REL="stylesheet" TYPE="text/css" HREF="../estilo.css">
+  <link rel="icon" href="../favicon.ico">
+  <link rel="shortcut icon" href="../favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Invoice Printing</title>
+ </head>
 
-if(($handle = @fopen("COM7", "w")) === FALSE){
-        die('No se puedo Imprimir, Verifique su conexion con el Terminal');
-    }
+  <body>
+      <header class="header"><a href="index.php"> <img src="../insepet.png" alt="Logo sistema NSX"></a> </header>
+     <div id="idioma">Language : <a href="index.php">es</a>/<a href="en/index.php">en</a></div>
+ <nav id="cssmenu">
+  <ul>
+    <li class="active"><a href="index.php">Sales</a></li>
+    <li><a href="historico.php">Historical</a></li>
+    <!--<li><a href="turno.php">Turnos</a></li>-->
+    <li><a href="configuracion.php">Configuration</a></li>
+  </ul>
+</nav>  
+
+
+
+<?php
+require('/fpdf/fpdf.php');
     
 $servidor = "localhost";
 $username = "root";
 $password = "12345";
-$dbname = "factura";
+$dbname = "monitor";
 $connect = new mysqli($servidor, $username, $password, $dbname);
-$consulta = "SELECT logo, empresa, dir, ciudad, nit, tel, moneda FROM datos";
+$consulta = "SELECT logo, empresa, dir, ciudad, nit, tel, moneda,volumen, puerto FROM configuracion";
 $result = $connect->query($consulta);
 $row = $result->fetch_assoc();
 $connect->close();
+if(($handle = @fopen($row["puerto"], "w")) === FALSE){
+        die('It can not print. Please check the printer configuration');
+    }
 $fecha   =  filter_input(INPUT_GET, 'fecha');
 $nventa  =  filter_input(INPUT_GET, 'n_venta');
 $cliente =  filter_input(INPUT_GET, 'nombre');
@@ -23,6 +52,10 @@ $producto = filter_input(INPUT_GET, 'producto');
 $ppu      = filter_input(INPUT_GET, 'ppu');
 $cantidad = filter_input(INPUT_GET, 'cantidad');
 $valor    = filter_input(INPUT_GET, 'valor');
+$label1 = filter_input(INPUT_GET, 'select1');
+$contenido1 = filter_input(INPUT_GET, 'campo1');
+$label2 = filter_input(INPUT_GET, 'select2');
+$contenido2 = filter_input(INPUT_GET, 'campo2');
 /*$dato = $_POST['datos'];  */
 
 fwrite($handle,chr(27). chr(64));//reinicio
@@ -49,43 +82,52 @@ fwrite($handle, chr(27). chr(100). chr(1));//salto de linea
 fwrite($handle,$row["tel"]);
 fwrite($handle, chr(27). chr(100). chr(1));//salto de linea
 fwrite($handle, chr(27). chr(100). chr(1));//salto de linea
-fwrite($handle,"Factura de venta");
+fwrite($handle,"Invoice");
 fwrite($handle, chr(27). chr(100). chr(1));//salto de linea
 fwrite($handle,"=================================");
 fwrite($handle, chr(27). chr(100). chr(1));//salto de linea
 fwrite($handle, chr(27). chr(100). chr(1));//salto de linea
-fwrite($handle,"Fecha:             ".$fecha);
+fwrite($handle, chr(27). chr(97). chr(0));//justificado a izquierda
+fwrite($handle,"Date:                ".$fecha);
 fwrite($handle, chr(27). chr(100). chr(1));//salto de linea
-fwrite($handle,"Numero de venta:           ".$nventa);
+fwrite($handle,"Operation number:         ".$nventa);
 fwrite($handle, chr(27). chr(100). chr(1));//salto de linea
-fwrite($handle,"Cliente:          ".$cliente);
+fwrite($handle,"Customer:            ".$cliente);
 fwrite($handle, chr(27). chr(100). chr(1));//salto de linea
-fwrite($handle,"Nit:            ".$nit);
+fwrite($handle,"VAT:              ".$nit);
 fwrite($handle, chr(27). chr(100). chr(1));//salto de linea
-fwrite($handle,"Dirección:     ".$dir);
+fwrite($handle,"Address:  ".$dir);
 fwrite($handle, chr(27). chr(100). chr(1));//salto de linea
-fwrite($handle,"Telefono:             ".$tel);
+fwrite($handle,"Phone:          ".$tel);
+if ($contenido1!=""){
+    fwrite($handle, chr(27). chr(100). chr(1));//salto de linea
+    fwrite($handle,$label1." :          ".$contenido1);    
+}
+if ($contenido2!=""){
+    fwrite($handle, chr(27). chr(100). chr(1));//salto de linea
+    fwrite($handle,$label2." :        ".$contenido2);    
+}
 fwrite($handle, chr(27). chr(100). chr(1));//salto de linea
-fwrite($handle,"Producto:               ".$producto);
+fwrite($handle,"Product:              ".$producto);
 fwrite($handle, chr(27). chr(100). chr(1));//salto de linea
-fwrite($handle,"PPU:               ".$row["moneda"]." ".$ppu);
+fwrite($handle,"PPU:                    ".$row["moneda"]." ".$ppu);
 fwrite($handle, chr(27). chr(100). chr(1));//salto de linea
-fwrite($handle,"Cantidad:                ".$cantidad);
+fwrite($handle,"Quantity:               ".$cantidad." ".$row["volumen"]);
 fwrite($handle, chr(27). chr(100). chr(1));//salto de linea
-fwrite($handle,"Valor:            ".$row["moneda"]." ".$valor);
-fwrite($handle, chr(27). chr(100). chr(1));//salto de linea
-fwrite($handle, chr(27). chr(100). chr(1));//salto de linea
+fwrite($handle,"Value:             ".$row["moneda"]." ".$valor);
 fwrite($handle, chr(27). chr(100). chr(1));//salto de linea
 fwrite($handle, chr(27). chr(100). chr(1));//salto de linea
 fwrite($handle,"=================================");
-fwrite($handle,"Impreso por ...");
+fwrite($handle,"Printing by ...");
 fwrite($handle, chr(27). chr(100). chr(1));//salto de linea
-fwrite($handle,"Resolucion de facturacion 123-456");
+fwrite($handle,"Data invoice");
 fwrite($handle, chr(27). chr(100). chr(1));//salto de linea
 fwrite($handle,"=================================");
-fwrite($handle,"Resolucion de facturacion 123-456");
-
+fwrite($handle, chr(27). chr(100). chr(1));//salto de linea
+fwrite($handle, chr(27). chr(100). chr(1));//salto de linea
+fwrite($handle, chr(27). chr(100). chr(1));//salto de linea
+fwrite($handle, chr(27). chr(100). chr(1));//salto de linea
 
 fclose($handle); // cierra el fichero PRN
-$salida = shell_exec('lpr COM7'); //lpr->puerto impresora, imprimir archivo PRN
+$salida = shell_exec('lpr'.$row["ciudad"]); //lpr->puerto impresora, imprimir archivo PRN
 ?>

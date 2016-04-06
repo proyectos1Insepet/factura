@@ -50,7 +50,7 @@ if (filter_input(INPUT_POST,'subirBtn')) {
 $servername = "localhost";
 $username = "root";
 $password = "12345";
-$dbname = "factura";
+$dbname = "monitor";
 $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
@@ -67,11 +67,13 @@ if( $conn === false ) {
     $nit = filter_input(INPUT_POST, 'nit'); /*isset($_POST['dir'])? $_POST['dir'] : NULL;*/
     $tel = filter_input(INPUT_POST, 'tel');/*isset($_POST['tel'])? $_POST['tel'] : NULL;*/
     $moneda = filter_input(INPUT_POST, 'moneda');/*isset($_POST['tel'])? $_POST['tel'] : NULL;*/
-    
-    $sql = "INSERT INTO datos (empresa, dir, ciudad, nit,tel,moneda) VALUES ('$empresa','$dir','$ciudad','$nit','$tel','$moneda')";
+    $volumen =filter_input(INPUT_POST, 'volumen');
+    $puerto = filter_input(INPUT_POST, 'puerto');
+    $footer = filter_input(INPUT_POST, 'footer');
+    $sql = "UPDATE configuracion SET empresa='$empresa', dir='$dir', ciudad='$ciudad', nit='$nit',tel='$tel',moneda='$moneda',volumen='$volumen',puerto='$puerto',footer='$footer'";
     
     if ($conn->query($sql) === TRUE) {
-    echo "Encabezado de factura insertado correctamente";
+    echo "Headline inserted correctly";
     } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
     }

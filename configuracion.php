@@ -48,6 +48,7 @@ Sistemas Insepet LTDA
                 <option>COM9</option>
             </select>
         </p>
+        <p><input name="footer" type="text"  placeholder="Mensaje de pie"/></p>
         <input input type="submit" name="enviar" value="Ingresar"  id="button-blue"  />        
       </div>
     </form>

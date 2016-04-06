@@ -4,8 +4,7 @@ Monitor de facturación
 Sistemas Insepet LTDA
 -->
 <html>
- <head>
-  <link rel="stylesheet" type="text/css" href="estilo.css">
+ <head>  
   <meta charset="UTF-8">
   <link REL="stylesheet" TYPE="text/css" HREF="estilo.css">
   <link rel="icon" href="favicon.ico">
@@ -119,13 +118,13 @@ if( $conn === false ) {
 sqlsrv_close($conn);
 
 ?>
-
+</p> 
 
 <?php
-echo '<a  target =_self href="impresora.php?fecha='.$fecha2.'&n_venta='.$num_venta.'&nombre='.$nombre.'&nit='.$nit.'&dir='.$dir.'&tel='.$tel.'&select1='.$label1.'&campo1='.$contenido1.'&producto='.$producto.'&ppu='.$precio2.'&cantidad='.$cantidad.'&valor='.$valor2.'">'.'Impresión</a>'."</td> ";
+echo '<a  target =_self href="impresora.php?fecha='.$fecha2.'&n_venta='.$num_venta.'&nombre='.$nombre.'&nit='.$nit.'&dir='.$dir.'&tel='.$tel.'&select1='.$label1.'&campo1='.$contenido1.'&select2='.$label2.'&campo2='.$contenido2.'&producto='.$producto.'&ppu='.$precio2.'&cantidad='.$cantidad.'&valor='.$valor2.'">'.'Impresión</a>'."</td> ";
 ?>
          </div>
-</p>     
+    
      </body>
 </html>
 

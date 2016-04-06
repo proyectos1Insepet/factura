@@ -127,7 +127,7 @@ class imgUpldr {
                 }
                 $sql = "UPDATE configuracion SET logo= '$this->_name'";
                  if ($conn->query($sql) === TRUE) {
-                 echo "Logo de factura subido correctamente";
+                 echo "Logo Ok";
                  } else {
                  echo "Error: " . $sql . "<br>" . $conn->error;
                  }

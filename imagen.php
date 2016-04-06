@@ -70,7 +70,8 @@ if( $conn === false ) {
     $moneda = filter_input(INPUT_POST, 'moneda');/*isset($_POST['tel'])? $_POST['tel'] : NULL;*/
     $volumen =filter_input(INPUT_POST, 'volumen');
     $puerto = filter_input(INPUT_POST, 'puerto');
-    $sql = "UPDATE configuracion SET empresa='$empresa', dir='$dir', ciudad='$ciudad', nit='$nit',tel='$tel',moneda='$moneda',volumen='$volumen',puerto='$puerto'";
+    $footer = filter_input(INPUT_POST, 'footer');
+    $sql = "UPDATE configuracion SET empresa='$empresa', dir='$dir', ciudad='$ciudad', nit='$nit',tel='$tel',moneda='$moneda',volumen='$volumen',puerto='$puerto',footer='$footer'";
     
     if ($conn->query($sql) === TRUE) {
     echo "Encabezado de factura insertado correctamente";

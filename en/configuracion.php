@@ -33,6 +33,21 @@ Sistemas Insepet LTDA
         <p><input name="nit" type="text" placeholder="VAT"/></p>
         <p><input name="tel" type="text"  placeholder="Phone number"/></p>
         <p><input name="moneda" type="text"  placeholder="Currency symbol"/></p>
+        <p><input name="volumen" type="text"  placeholder="Volume symbol"/></p>
+        <p>Printer port <br>
+            <select name="puerto">
+                <option>COM1</option>
+                <option>COM2</option>
+                <option>COM3</option>
+                <option>COM4</option>
+                <option>COM5</option>
+                <option>COM6</option>
+                <option>COM7</option>
+                <option>COM8</option>
+                <option>COM9</option>
+            </select>
+        </p>
+        <p><input name="footer" type="text"  placeholder="Footer message"/></p>
         <input input type="submit" name="enviar" value="Submit"  id="button-blue"  />        
       </div>
     </form>

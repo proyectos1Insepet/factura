@@ -30,7 +30,7 @@ Sistemas Insepet LTDA
      <div class="justificado">
 <?php
 
-$serverName = "192.168.110.120"; //serverName\instanceName
+$serverName = "192.168.110.42"; //serverName\instanceName
 $tabl = 'venta';
 $params = array();
 $options = array("Scrollable" => SQLSRV_CURSOR_CLIENT_BUFFERED);

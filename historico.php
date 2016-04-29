@@ -31,12 +31,12 @@ Sistemas Insepet LTDA
     <h1>Histórico de ventas</h1>
    
 <?php
-$serverName = "192.168.110.120"; //serverName\instanceName
+$serverName = "192.168.110.42"; //serverName\instanceName
 $tabl = 'venta';
 $params = array();
 $options = array("Scrollable" => SQLSRV_CURSOR_CLIENT_BUFFERED);
 $pstock="EXEC SP_COLUMNS $tabl";
-$connectionInfo = array( "Database"=>"EstacionNSX", "UID"=>"sa", "PWD"=>"6319O#17B75B21");
+$connectionInfo = array( "Database"=>"EstacionNSX", "UID"=>"sa", "PWD"=>"insepetadmin"); ////6319O#17B75B21\
 $conn = sqlsrv_connect( $serverName, $connectionInfo);
 
 ?>

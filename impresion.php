@@ -30,12 +30,12 @@ Sistemas Insepet LTDA
      <div class="justificado">
 <?php
 
-$serverName = "192.168.110.42"; //serverName\instanceName
+$serverName = "192.168.110.38"; //serverName\instanceName
 $tabl = 'venta';
 $params = array();
 $options = array("Scrollable" => SQLSRV_CURSOR_CLIENT_BUFFERED);
 $pstock="EXEC SP_COLUMNS $tabl";
-$connectionInfo = array( "Database"=>"EstacionNSX", "UID"=>"sa", "PWD"=>"6319O#17B75B21");
+$connectionInfo = array( "Database"=>"EstacionNSX", "UID"=>"sa", "PWD"=>"insepetadmin");
 $conn = sqlsrv_connect( $serverName, $connectionInfo);
 $servidor = "localhost";
 $username = "root";

@@ -31,7 +31,7 @@ Sistemas Insepet LTDA
     <h1>Histórico de ventas</h1>
    
 <?php
-$serverName = "192.168.110.42"; //serverName\instanceName
+$serverName = "192.168.110.38"; //serverName\instanceName
 $tabl = 'venta';
 $params = array();
 $options = array("Scrollable" => SQLSRV_CURSOR_CLIENT_BUFFERED);

@@ -5,7 +5,7 @@ $tabl = 'venta';
 $params = array();
 $options = array("Scrollable" => SQLSRV_CURSOR_CLIENT_BUFFERED);
 $pstock="EXEC SP_COLUMNS $tabl";
-$connectionInfo = array( "Database"=>"EstacionNSX", "UID"=>"sa", "PWD"=>"insepetadmin");
+$connectionInfo = array( "Database"=>"EstacionNSX", "UID"=>"sa", "PWD"=>"6319O#17B75B21");
 $conn = sqlsrv_connect( $serverName, $connectionInfo);
 
 

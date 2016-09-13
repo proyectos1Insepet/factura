@@ -35,7 +35,7 @@ $tabl = 'venta';
 $params = array();
 $options = array("Scrollable" => SQLSRV_CURSOR_CLIENT_BUFFERED);
 $pstock="EXEC SP_COLUMNS $tabl";
-$connectionInfo = array( "Database"=>"EstacionNSX", "UID"=>"sa", "PWD"=>"insepetadmin");
+$connectionInfo = array( "Database"=>"EstacionNSX", "UID"=>"sa", "PWD"=>"6319O#17B75B21");//6319O#17B75B21
 $conn = sqlsrv_connect( $serverName, $connectionInfo);
 $servidor = "localhost";
 $username = "root";
@@ -121,7 +121,7 @@ sqlsrv_close($conn);
 </p> 
 
 <?php
-echo '<a  target =_self href="impresora.php?fecha='.$fecha2.'&n_venta='.$num_venta.'&nombre='.$nombre.'&nit='.$nit.'&dir='.$dir.'&tel='.$tel.'&select1='.$label1.'&campo1='.$contenido1.'&select2='.$label2.'&campo2='.$contenido2.'&producto='.$producto.'&ppu='.$precio2.'&cantidad='.$cantidad.'&valor='.$valor2.'">'.'Impresión</a>'."</td> ";
+echo '<a target =_self href="impresora.php?fecha='.$fecha2.'&n_venta='.$num_venta.'&nombre='.$nombre.'&nit='.$nit.'&dir='.$dir.'&tel='.$tel.'&select1='.$label1.'&campo1='.$contenido1.'&select2='.$label2.'&campo2='.$contenido2.'&producto='.$producto.'&ppu='.$precio2.'&cantidad='.$cantidad.'&valor='.$valor2.'">'.'Impresión</a>'."</td> ";
 ?>
          </div>
     
